@@ -8,10 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+      fontFamily: {
+        acme: ["var(--font-acme)"],
+        galano: ["var(--font-galano)"]
+      }
     },
   },
   plugins: [],
