@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "BKM Yaz Etkinlikleri: Zengin Mutfağı",
+    "description": "1978 yılında ilk kez İstanbul Şehir Tiyatrolarında bu oyunda aşçı Lütfü Usta’yı canlandıran Şener Şen, 40 yıl aradan sonra aynı rolde ve genç bir oyuncu kadrosuyla tekrar sahnede.",
+    "location": "Maximum UNIQ Hall",
+    "image": "../assets/images/bkm-yaz-etkinlikleri-zengin-mutfagi.png",
+    "date": "7 Eylül Salı 21:15",
+    "type": "Tiyatro"
+  },
+  {
+    "id": 2,
+    "title": "Yasemin Sakallıoğlu",
+    "description": "Genç komedyen; aile bağları, kadın erkek ilişkileri ve bu ilişkilerin psikolojik etkilerini çeşitli tiplemelerinden yardım alarak esprili bir dille aktarıyor.",
+    "location": "Bostancı Gösteri Merlezi",
+    "image": "../assets/images/yasemin-sakallioglu.png",
+    "date": "7 Eylül Salı 21:15",
+    "type": "Stand-up"
+  },
+  {
+    "id": 3,
+    "title": "Kin",
+    "description": "Yılmaz Erdoğan’ın kaleme aldığı Güney Kore adaptasyonu KİN, bir polisiye gerilim. Başkomiser Harun, mesleğinin en büyük ödülünü aldıktan sonra, ekip arkadaşlarıyla bir kutlamaya gider. Ödülün ardından terfi alacağına emin olan Harun, o gece eve dönerken bindiği taksideki şoförün saldırısı sonucu bir nefs-i müdafaa cinayeti işler. Ertesi sabah bu cinayet vakası emniyete ulaşır ve Harun, kendi işlediği cinayetin failini aramaya başlar. Hem kaçan ve hem de kovalayan olmanın stresiyle başa çıkmaya çalışırken bulduğu her ipucu, onu çok daha karmaşık bir olayın içine çeker.",
+    "location": "Pera Sinema",
+    "image": "../assets/images/kin.png",
+    "date": "7 Eylül Salı 21:15",
+    "type": "Sinema"
+  },
+  {
+    "id": 4,
+    "title": "Sinema Keyfi: Rifkin’s Festival",
+    "description": "Rifkin'in Festivalil, gittikleri San Sebastian Festivali'nin büyüsüne kapılan bir çiftin hayatına odaklanıyor. Amerikalı evli bir çift, San Sebastian Festivali'ne gittiklerinde adeta büyülenir. Filmlerin fantezisine kapılan çift, şehrin güzelliğine de mest olur. Kadının çekici bir Fransız yönetmenle ilişkisi vardır, adam ise burada yaşayan İspanyol bir kadına aşık olur.",
+    "location": "Maximum UNIQ Hall",
+    "image": "../assets/images/sinema-keyfi-rifkins-festival.png",
+    "date": "7 Eylül Salı 21:15",
+    "type": "Sinema"
+  }
+]

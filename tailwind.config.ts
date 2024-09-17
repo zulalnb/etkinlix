@@ -11,6 +11,15 @@ const config: Config = {
       fontFamily: {
         acme: ["var(--font-acme)"],
         galano: ["var(--font-galano)"]
+      },
+      colors: {
+        pink: "#FF0D87",
+        purple: "#B77CB8",
+        orange: "#F19653",
+        red: "#F07266",
+        green: "#9FAE5D",
+        "medium-grey": "#9C9C9C",
+        "extra-light-grey": "#F5F5F5"
       }
     },
   },
