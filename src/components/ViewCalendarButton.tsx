@@ -1,11 +1,11 @@
 import { type FC } from "react";
 import { Icon } from "./Icon";
 
-export const FilterButton: FC = ({ ...rest }) => {
+export const ViewCalendarButton: FC = ({ ...rest }) => {
 	return (
 		<button className="flex items-center text-black transition-colors hover:text-pink" {...rest}>
-			<Icon name="menu" size={20} className="mr-2" />
-			<span>Filtreler</span>
+			<Icon name="calendar" size={22} className="mr-2" />
+			<span>Takvimde Gör</span>
 		</button>
 	);
 };
