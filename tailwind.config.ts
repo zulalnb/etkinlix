@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         acme: ["var(--font-acme)"],
-        galano: ["var(--font-galano)"]
+        galano: ["var(--font-galano)"],
       },
       colors: {
         pink: "#FF0D87",
@@ -21,8 +21,8 @@ const config: Config = {
         green: "#9FAE5D",
         "medium-gray": "#9C9C9C",
         "light-gray": "#DEDEDE",
-        "extra-light-gray": "#F5F5F5"
-      }
+        "extra-light-gray": "#F5F5F5",
+      },
     },
   },
   plugins: [],
