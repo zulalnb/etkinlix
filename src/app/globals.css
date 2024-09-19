@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 body {
-  font-family: var(--font-galano), sans-serif;
+	font-family: var(--font-galano), sans-serif;
+}
+.scrollbar-hide {
+	-webkit-overflow-scrolling: touch;
 }
 
 @layer utilities {
