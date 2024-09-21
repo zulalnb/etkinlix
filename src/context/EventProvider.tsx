@@ -1,24 +1,31 @@
 "use client";
 import React, { createContext, useContext, useReducer, ReactNode } from "react";
-import { Event } from "@/types/Event";
+import { Event, Type } from "@/types/Event";
 import events from "@/data/events.json";
 
-type Action = { type: "ADD_TO_CALENDAR"; id: number } | { type: "FILTER_ALL" };
+// Define the possible actions
+type Action =
+	| { type: "ADD_TO_CALENDAR"; id: number }
+	| { type: "FILTER_ALL" }
+	| { type: "FILTER_BY_TYPE"; eventType: Type }
+	| { type: "SET_ACTIVE_FILTER"; filter: string };
 
 // Define the initial state type
 interface State {
 	events: Event[];
 	filteredEvents: Event[];
+	activeFilter: string;
 }
 
 // Initial state
 const initialState: State = {
 	events: events as Event[],
 	filteredEvents: [],
+	activeFilter: "all",
 };
 
 // Create the context
-const EventsContext = createContext<{
+const EventContext = createContext<{
 	state: State;
 	dispatch: React.Dispatch<Action>;
 }>({
@@ -41,8 +48,19 @@ const eventReducer = (state: State, action: Action): State => {
 			};
 
 		case "FILTER_ALL":
-			return { ...state, filteredEvents: state.events };
+			return { ...state, filteredEvents: state.events, activeFilter: "all" };
 
+		case "FILTER_BY_TYPE":
+			return {
+				...state,
+				filteredEvents: state.events.filter((event) => event.type === action.eventType),
+				activeFilter: action.eventType,
+			};
+		case "SET_ACTIVE_FILTER":
+			return {
+				...state,
+				activeFilter: action.filter,
+			};
 		default:
 			return state;
 	}
@@ -55,8 +73,8 @@ export const EventProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 		filteredEvents: initialState.events, // Initially show all events
 	});
 
-	return <EventsContext.Provider value={{ state, dispatch }}>{children}</EventsContext.Provider>;
+	return <EventContext.Provider value={{ state, dispatch }}>{children}</EventContext.Provider>;
 };
 
 // Custom hook to use the Events context
-export const useEvent = () => useContext(EventsContext);
+export const useEvent = () => useContext(EventContext);
