@@ -9,6 +9,7 @@ import { AddToCalendarButton } from "./AddToCalendarButton";
 import { Icon } from "./Icon";
 import { clipText } from "@/lib/utils";
 import { Event } from "@/types/Event";
+import { useMobileView } from "@/hooks/useMobileMenu";
 
 export const EventCard: FC<Event> = ({
 	date,
@@ -19,6 +20,8 @@ export const EventCard: FC<Event> = ({
 	image,
 	isAddedToCalendar,
 }) => {
+	const isMobile = useMobileView();
+
 	return (
 		<div className="mb-4 h-[28rem] w-full border border-light-gray md:h-52">
 			<div className="h-full w-full md:flex">
@@ -50,7 +53,7 @@ export const EventCard: FC<Event> = ({
 						<span className="text-sm text-medium-gray">{location}</span>
 					</div>
 					<p>
-						{clipText(description)}
+						{clipText(description, isMobile ? 4 : 24)}
 						{"... "}
 						<Link href="#" className="font-acme font-bold underline">
 							Detaylı Bilgi
