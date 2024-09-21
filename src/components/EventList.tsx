@@ -1,15 +1,11 @@
 "use client";
 
 import { type FC } from "react";
-import { Event, Events } from "@/types/Event";
+import { Event } from "@/types/Event";
 import { EventCard } from "./EventCard";
 import { useEvent } from "@/context/EventProvider";
 
-interface EventListProps {
-	events: Events;
-}
-
-export const EventList: FC<EventListProps> = () => {
+export const EventList: FC = () => {
 	const { state } = useEvent();
 
 	return (
