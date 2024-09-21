@@ -5,7 +5,6 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { SecondaryHeader } from "@/components/SecondaryHeader";
 import { EventProvider } from "@/context/EventProvider";
-import { FilterModal } from "@/components/FilterModal";
 
 // Load the font
 const galanoGrotesque = localFont({
@@ -57,7 +56,6 @@ export default function RootLayout({
 		<html lang="tr">
 			<EventProvider>
 				<body className={`${galanoGrotesque.variable} ${acme.variable}`}>
-					{/* <FilterModal /> */}
 					<Header />
 					<SecondaryHeader />
 					{children}
