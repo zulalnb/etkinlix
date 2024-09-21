@@ -1,17 +1,20 @@
 "use client";
 
-import { Event, Events } from "@/types/Event";
 import { type FC } from "react";
+import { Event, Events } from "@/types/Event";
 import { EventCard } from "./EventCard";
+import { useEvent } from "@/context/EventProvider";
 
 interface EventListProps {
 	events: Events;
 }
 
-export const EventList: FC<EventListProps> = ({ events }) => {
+export const EventList: FC<EventListProps> = () => {
+	const { state } = useEvent();
+
 	return (
 		<div className="space-y-4">
-			{events.map((event: Event) => (
+			{state.filteredEvents.map((event: Event) => (
 				<EventCard
 					key={event.id}
 					id={event.id}

@@ -7,11 +7,13 @@ import { EventType } from "./EventType";
 import { Button } from "./Button";
 import { AddToCalendarButton } from "./AddToCalendarButton";
 import { Icon } from "./Icon";
+import { useEvent } from "@/context/EventProvider";
+import { useMobileView } from "@/hooks/useMobileMenu";
 import { clipText } from "@/lib/utils";
 import { Event } from "@/types/Event";
-import { useMobileView } from "@/hooks/useMobileMenu";
 
 export const EventCard: FC<Event> = ({
+	id,
 	date,
 	title,
 	description,
@@ -21,6 +23,12 @@ export const EventCard: FC<Event> = ({
 	isAddedToCalendar,
 }) => {
 	const isMobile = useMobileView();
+	const { dispatch } = useEvent();
+
+	// Add event to calendar
+	const addToCalendar = (id: number) => {
+		dispatch({ type: "ADD_TO_CALENDAR", id });
+	};
 
 	return (
 		<div className="mb-4 h-[28rem] w-full border border-light-gray md:h-52">
@@ -62,7 +70,7 @@ export const EventCard: FC<Event> = ({
 				</div>
 				<div className="flex justify-center gap-4 px-4 md:flex-col md:gap-2.5">
 					<Button>Bilet Al</Button>
-					<AddToCalendarButton isAdded={isAddedToCalendar} />
+					<AddToCalendarButton onClick={() => addToCalendar(id)} isAdded={isAddedToCalendar} />
 				</div>
 			</div>
 		</div>

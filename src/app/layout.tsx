@@ -4,6 +4,7 @@ import { Acme } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { SecondaryHeader } from "@/components/SecondaryHeader";
+import { EventProvider } from "@/context/EventProvider";
 
 // Load the font
 const galanoGrotesque = localFont({
@@ -53,11 +54,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="tr">
-			<body className={`${galanoGrotesque.variable} ${acme.variable}`}>
-				<Header />
-				<SecondaryHeader />
-				{children}
-			</body>
+			<EventProvider>
+				<body className={`${galanoGrotesque.variable} ${acme.variable}`}>
+					<Header />
+					<SecondaryHeader />
+					{children}
+				</body>
+			</EventProvider>
 		</html>
 	);
 }
