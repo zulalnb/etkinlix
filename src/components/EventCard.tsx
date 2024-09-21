@@ -1,22 +1,19 @@
-import React from "react";
+"use client";
+
+import { type FC } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { EventType } from "./EventType";
 import { Button } from "./Button";
 import { AddToCalendarButton } from "./AddToCalendarButton";
 import { Icon } from "./Icon";
+import { clipText } from "@/lib/utils";
+import { Event } from "@/types/Event";
 
-interface EventCardProps {
-	date: string;
-	title: string;
-	location: string;
-	type: "Tiyatro" | "Stand-up" | "Sinema" | "Konser" | "Çocuk";
-	image: string;
-	isAddedToCalendar: boolean;
-}
-
-export const EventCard: React.FC<EventCardProps> = ({
+export const EventCard: FC<Event> = ({
 	date,
 	title,
+	description,
 	location,
 	type,
 	image,
@@ -52,11 +49,13 @@ export const EventCard: React.FC<EventCardProps> = ({
 						<Icon name="location" size={14} className="text-medium-gray" />
 						<span className="text-sm text-medium-gray">{location}</span>
 					</div>
-					<p className="hidden md:block">
-						1978 yılında ilk kez İstanbul Şehir Tiyatrolarında bu oyunda aşçı Lütfü Usta’yı canlandıran Şener
-						Şen, 40 yıl aradan sonra aynı rolde ve genç bir.... Detaylı Bilgi
+					<p>
+						{clipText(description)}
+						{"... "}
+						<Link href="#" className="font-acme font-bold underline">
+							Detaylı Bilgi
+						</Link>
 					</p>
-					<p className="block md:hidden">1978 yılında ilk kez... Detaylı Bilgi</p>
 				</div>
 				<div className="flex justify-center gap-4 px-4 md:flex-col md:gap-2.5">
 					<Button>Bilet Al</Button>

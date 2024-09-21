@@ -10,3 +10,5 @@ export interface Event {
 }
 
 export type Type = "Tiyatro" | "Stand-up" | "Sinema" | "Konser" | "Çocuk";
+
+export type Events = Event[];
