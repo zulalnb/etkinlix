@@ -10,7 +10,7 @@ export const Button: FC<ButtonProps> = ({ children, className, ...rest }) => {
 		<button
 			type="button"
 			className={clsx(
-				"whitespace-nowrap bg-pink px-11 py-2.5 font-bold text-white transition-colors hover:bg-pink/85 md:px-14",
+				"whitespace-nowrap bg-pink px-11 py-2.5 font-bold text-white transition-colors hover:shadow-[inset_0_0_0_100px_rgba(0,0,0,.2)] md:px-14",
 				className,
 			)}
 			{...rest}
