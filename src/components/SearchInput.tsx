@@ -27,6 +27,7 @@ export const SearchInput = () => {
 					placeholder="Etkinlik Ara"
 					autoComplete="on"
 					onChange={(e) => setTitle(e.target.value)}
+					value={title}
 					required
 					className="h-10 w-full border border-light-gray bg-white px-4 py-2 pl-10 text-sm text-black placeholder:text-medium-gray hover:border-medium-gray focus:border-pink focus:ring-pink"
 				/>
