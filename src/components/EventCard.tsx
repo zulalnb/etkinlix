@@ -26,8 +26,8 @@ export const EventCard: FC<Event> = ({
 	const { dispatch } = useEvent();
 
 	// Add event to calendar
-	const addToCalendar = (id: number) => {
-		dispatch({ type: "ADD_TO_CALENDAR", id });
+	const toggleCalendar = (id: number) => {
+		dispatch({ type: "TOGGLE_CALENDAR", id });
 	};
 
 	return (
@@ -70,7 +70,7 @@ export const EventCard: FC<Event> = ({
 				</div>
 				<div className="flex justify-center gap-4 px-4 md:flex-col md:gap-2.5">
 					<Button>Bilet Al</Button>
-					<AddToCalendarButton onClick={() => addToCalendar(id)} isAdded={isAddedToCalendar} />
+					<AddToCalendarButton onClick={() => toggleCalendar(id)} isAdded={isAddedToCalendar} />
 				</div>
 			</div>
 		</div>

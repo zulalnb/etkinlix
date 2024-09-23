@@ -5,7 +5,7 @@ import events from "@/data/events.json";
 
 // Define the possible actions
 type Action =
-	| { type: "ADD_TO_CALENDAR"; id: number }
+	| { type: "TOGGLE_CALENDAR"; id: number }
 	| { type: "FILTER_ALL" }
 	| { type: "FILTER_BY_TYPE"; eventType: Type }
 	| { type: "SET_ACTIVE_FILTER"; filter: string };
@@ -36,14 +36,14 @@ const EventContext = createContext<{
 // Reducer function to handle actions
 const eventReducer = (state: State, action: Action): State => {
 	switch (action.type) {
-		case "ADD_TO_CALENDAR":
+		case "TOGGLE_CALENDAR":
 			return {
 				...state,
 				events: state.events.map((event) =>
-					event.id === action.id ? { ...event, isAddedToCalendar: true } : event,
+					event.id === action.id ? { ...event, isAddedToCalendar: !event.isAddedToCalendar } : event,
 				),
 				filteredEvents: state.filteredEvents.map((event) =>
-					event.id === action.id ? { ...event, isAddedToCalendar: true } : event,
+					event.id === action.id ? { ...event, isAddedToCalendar: !event.isAddedToCalendar } : event,
 				),
 			};
 
