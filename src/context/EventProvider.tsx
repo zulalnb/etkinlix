@@ -8,6 +8,7 @@ type Action =
 	| { type: "TOGGLE_CALENDAR"; id: number }
 	| { type: "FILTER_ALL" }
 	| { type: "FILTER_BY_TYPE"; eventType: Type }
+	| { type: "FILTER_BY_TITLE"; title: string }
 	| { type: "SET_ACTIVE_FILTER"; filter: string };
 
 // Define the initial state type
@@ -56,6 +57,21 @@ const eventReducer = (state: State, action: Action): State => {
 				filteredEvents: state.events.filter((event) => event.type === action.eventType),
 				activeFilter: action.eventType,
 			};
+
+		case "FILTER_BY_TITLE": {
+			state.events.filter((event) => {
+				return event.title.toLowerCase() === action.title.toLowerCase();
+			});
+
+			return {
+				...state,
+				filteredEvents: state.events.filter((event) =>
+					event.title.toLowerCase().includes(action.title.toLowerCase()),
+				),
+				activeFilter: "all",
+			};
+		}
+
 		case "SET_ACTIVE_FILTER":
 			return {
 				...state,

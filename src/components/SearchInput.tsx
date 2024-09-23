@@ -1,21 +1,17 @@
 "use client";
 
-import { type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
+import { useEvent } from "@/context/EventProvider";
 import { Icon } from "./Icon";
 
 export const SearchInput = () => {
+	const [title, setTitle] = useState<string>("");
+	const { dispatch } = useEvent();
+
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		const formData = new FormData(event.currentTarget); // Extract the form data
-
-		// Convert the form data if needed and then perform the search action
-		performSearch(formData);
-	};
-
-	const performSearch = (formData: FormData) => {
-		// Handle the search using FormData
-		console.log(Object.fromEntries(formData.entries())); // Example conversion
+		dispatch({ type: "FILTER_BY_TITLE", title });
 	};
 
 	return (
@@ -30,6 +26,7 @@ export const SearchInput = () => {
 					name="search"
 					placeholder="Etkinlik Ara"
 					autoComplete="on"
+					onChange={(e) => setTitle(e.target.value)}
 					required
 					className="h-10 w-full border border-light-gray bg-white px-4 py-2 pl-10 text-sm text-black placeholder:text-medium-gray hover:border-medium-gray focus:border-pink focus:ring-pink"
 				/>
