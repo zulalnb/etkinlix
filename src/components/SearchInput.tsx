@@ -19,6 +19,15 @@ export const SearchInput = () => {
 			onSubmit={onSubmit}
 			className="group relative my-2 flex w-full items-center justify-items-center text-sm lg:w-40"
 		>
+			<div className="absolute inset-y-0 left-0">
+				<button
+					type="submit"
+					className="inline-flex aspect-square w-10 items-center justify-center text-black group-invalid:pointer-events-none group-invalid:opacity-80"
+				>
+					<span className="sr-only">ara</span>
+					<Icon name="search" />
+				</button>
+			</div>
 			<label className="w-full">
 				<span className="sr-only">etkinlik ara</span>
 				<input
@@ -32,15 +41,6 @@ export const SearchInput = () => {
 					className="h-10 w-full border border-light-gray bg-white px-4 py-2 pl-10 text-sm text-black placeholder:text-medium-gray hover:border-medium-gray focus:border-pink focus:ring-pink"
 				/>
 			</label>
-			<div className="absolute inset-y-0 left-0">
-				<button
-					type="submit"
-					className="inline-flex aspect-square w-10 items-center justify-center text-black group-invalid:pointer-events-none group-invalid:opacity-80"
-				>
-					<span className="sr-only">ara</span>
-					<Icon name="search" />
-				</button>
-			</div>
 		</form>
 	);
 };
