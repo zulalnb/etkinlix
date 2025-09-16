@@ -11,6 +11,8 @@ import { useEvent } from "@/context/EventProvider";
 import { useMobileView } from "@/hooks/useMobileMenu";
 import { clipText } from "@/lib/utils";
 import { Event } from "@/types/Event";
+import moment from "moment";
+import "moment/locale/tr"; // import Turkish locale
 
 export const EventCard: FC<Event> = ({
 	id,
@@ -25,6 +27,8 @@ export const EventCard: FC<Event> = ({
 	const isMobile = useMobileView();
 	const { dispatch } = useEvent();
 
+	moment().locale("tr");
+
 	// Add event to calendar
 	const toggleCalendar = (id: number) => {
 		dispatch({ type: "TOGGLE_CALENDAR", id });
@@ -34,13 +38,16 @@ export const EventCard: FC<Event> = ({
 		<div className="mb-4 h-[28rem] w-full border border-light-gray md:h-52">
 			<div className="h-full w-full md:flex">
 				<div className="relative h-60 w-full md:h-full md:w-1/3">
-					<div className="absolute top-0 z-10 h-52 w-full bg-black md:left-0 md:h-full md:w-1/3">
-						<div className="mt-2 flex justify-center space-x-1 md:ml-2 md:mt-auto md:h-full md:w-1/2 md:flex-col md:space-x-0">
-							{date.split(" ").map((d) => (
-								<span key={d} className="text-center font-acme text-white md:inline-block md:text-pink">
-									{d}
-								</span>
-							))}
+					<div className="absolute top-0 z-10 h-52 w-full bg-black md:left-0 md:h-full md:w-1/2">
+						<div className="mt-2 flex justify-center space-x-1 md:ml-1 md:mt-auto md:h-full md:w-1/2 md:flex-col md:space-x-0">
+							{moment(date)
+								.format("D MMMM dddd HH:mm")
+								.split(" ")
+								.map((d) => (
+									<span key={d} className="text-center font-acme text-white md:inline-block md:text-pink">
+										{d}
+									</span>
+								))}
 						</div>
 					</div>
 					<div className="absolute bottom-0 z-20 h-48 w-full md:bottom-auto md:right-0 md:h-full md:w-3/4">

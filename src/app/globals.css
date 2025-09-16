@@ -4,10 +4,9 @@
 
 body {
 	font-family: var(--font-galano), sans-serif;
-}
-.scrollbar-hide {
-	-webkit-overflow-scrolling: touch;
+	scroll-behavior: smooth;
 }
 
-@layer utilities {
+.scrollbar-hide {
+	-webkit-overflow-scrolling: touch;
 }
