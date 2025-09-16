@@ -35,7 +35,7 @@ export const EventCard: FC<Event> = ({
 	};
 
 	return (
-		<div className="mb-4 h-[28rem] w-full border border-light-gray md:h-52">
+		<div className="mb-4 h-112 w-full border border-light-gray md:h-52">
 			<div className="h-full w-full md:flex">
 				<div className="relative h-60 w-full md:h-full md:w-1/3">
 					<div className="absolute top-0 z-10 h-52 w-full bg-black md:left-0 md:h-full md:w-1/2">

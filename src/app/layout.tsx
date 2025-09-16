@@ -54,13 +54,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="tr">
-			<EventProvider>
-				<body className={`${galanoGrotesque.variable} ${acme.variable}`}>
+			<body className={`${galanoGrotesque.variable} ${acme.variable}`}>
+				<EventProvider>
 					<Header />
 					<SecondaryHeader />
 					{children}
-				</body>
-			</EventProvider>
+				</EventProvider>
+			</body>
 		</html>
 	);
 }

@@ -20,7 +20,7 @@ export const SearchInput = () => {
 	};
 
 	return (
-		<form className="group relative my-2 flex w-full items-center justify-items-center text-sm lg:w-[12.5rem]">
+		<form className="group relative my-2 flex w-full items-center justify-items-center text-sm lg:w-50">
 			<div className="absolute inset-y-0 left-0">
 				<button
 					type="submit"
