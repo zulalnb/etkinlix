@@ -1,6 +1,8 @@
-export { default as Add } from "./add.svg";
-export { default as Calendar } from "./calendar.svg";
-export { default as Confirm } from "./confirm.svg";
-export { default as Location } from "./location.svg";
-export { default as Menu } from "./menu.svg";
-export { default as Search } from "./search.svg";
+import Add from "./add.svg";
+import Calendar from "./calendar.svg";
+import Confirm from "./confirm.svg";
+import Location from "./location.svg";
+import Menu from "./menu.svg";
+import Search from "./search.svg";
+
+export { Add, Calendar, Confirm, Location, Menu, Search };
