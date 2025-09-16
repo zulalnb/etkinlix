@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 import { useEvent } from "@/context/EventProvider";
 import { Icon } from "./Icon";
 
@@ -8,17 +8,19 @@ export const SearchInput = () => {
 	const [title, setTitle] = useState<string>("");
 	const { dispatch } = useEvent();
 
-	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-		event.preventDefault();
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value;
+		setTitle(value);
 
-		dispatch({ type: "FILTER_BY_TITLE", title });
+		if (!value.trim()) {
+			dispatch({ type: "FILTER_ALL" });
+		} else {
+			dispatch({ type: "FILTER_BY_TITLE", title: value });
+		}
 	};
 
 	return (
-		<form
-			onSubmit={onSubmit}
-			className="group relative my-2 flex w-full items-center justify-items-center text-sm lg:w-40"
-		>
+		<form className="group relative my-2 flex w-full items-center justify-items-center text-sm lg:w-[12.5rem]">
 			<div className="absolute inset-y-0 left-0">
 				<button
 					type="submit"
@@ -35,7 +37,7 @@ export const SearchInput = () => {
 					name="search"
 					placeholder="Etkinlik Ara"
 					autoComplete="on"
-					onChange={(e) => setTitle(e.target.value)}
+					onChange={handleChange}
 					value={title}
 					required
 					className="h-10 w-full border border-light-gray bg-white px-4 py-2 pl-10 text-sm text-black placeholder:text-medium-gray hover:border-medium-gray focus:border-pink focus:ring-pink"

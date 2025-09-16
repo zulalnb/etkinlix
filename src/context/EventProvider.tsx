@@ -59,10 +59,6 @@ const eventReducer = (state: State, action: Action): State => {
 			};
 
 		case "FILTER_BY_TITLE": {
-			state.events.filter((event) => {
-				return event.title.toLowerCase() === action.title.toLowerCase();
-			});
-
 			return {
 				...state,
 				filteredEvents: state.events.filter((event) =>
