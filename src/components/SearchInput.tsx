@@ -20,10 +20,13 @@ export const SearchInput = () => {
 	};
 
 	return (
-		<form className="group relative my-2 flex w-full items-center justify-items-center text-sm lg:w-50">
+		<form
+			className="group relative my-2 flex w-full items-center justify-items-center text-sm lg:w-50"
+			onSubmit={(e) => e.preventDefault()}
+		>
 			<div className="absolute inset-y-0 left-0">
 				<button
-					type="submit"
+					type="button"
 					className="inline-flex aspect-square w-10 items-center justify-center text-black group-invalid:pointer-events-none group-invalid:opacity-80"
 				>
 					<span className="sr-only">ara</span>
