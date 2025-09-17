@@ -2,7 +2,7 @@ import { EventList } from "@/components/EventList";
 
 export default function Page() {
 	return (
-		<main className="container mx-auto mb-5 mt-4 px-4 md:mt-16">
+		<main className="container mx-auto mt-4 mb-5 px-4 md:mt-16 md:px-0">
 			<EventList />
 		</main>
 	);

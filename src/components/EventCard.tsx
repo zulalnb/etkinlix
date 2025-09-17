@@ -32,11 +32,11 @@ export const EventCard: FC<Event> = ({
 	};
 
 	return (
-		<div className="border-light-gray mb-4 h-112 w-full border md:h-52">
+		<div className="border-light-gray mx-auto mb-4 h-112 w-full border md:h-51 md:max-w-9/10">
 			<div className="h-full w-full md:flex">
-				<div className="relative h-60 w-full md:h-full md:w-1/3">
-					<div className="absolute top-0 z-10 h-52 w-full bg-black md:left-0 md:h-full md:w-1/2">
-						<div className="mt-2 flex justify-center space-x-1 md:mt-auto md:ml-1 md:h-full md:w-1/2 md:flex-col md:space-x-0">
+				<div className="relative h-60 w-full md:h-full md:w-1/2 md:shrink-0 lg:w-11/20 lg:shrink">
+					<div className="absolute top-0 z-10 h-52 w-full bg-black md:left-0 md:h-full md:w-1/2 lg:w-12/25">
+						<div className="mt-2 flex justify-center space-x-1 md:mt-auto md:h-full md:w-2/5 md:flex-col md:space-x-0 lg:w-1/2">
 							{moment(date)
 								.format("D MMMM dddd HH:mm")
 								.split(" ")
@@ -47,7 +47,7 @@ export const EventCard: FC<Event> = ({
 								))}
 						</div>
 					</div>
-					<div className="absolute bottom-0 z-20 h-48 w-full md:right-0 md:bottom-auto md:h-full md:w-3/4">
+					<div className="absolute bottom-0 z-20 h-48 w-full md:right-0 md:bottom-auto md:h-full md:w-4/5 lg:w-3/4">
 						<div className="relative flex h-full w-full items-center justify-center">
 							<div className="relative aspect-square h-full w-4/5 overflow-hidden md:h-3/4 md:w-full">
 								<Image src={image} alt={title} fill className="absolute inset-0 object-cover object-center" />
@@ -56,7 +56,7 @@ export const EventCard: FC<Event> = ({
 						</div>
 					</div>
 				</div>
-				<div className="mt-8 mb-2.5 flex flex-col justify-center overflow-auto px-8 md:mt-auto md:mr-10 md:mb-auto md:ml-6 md:w-1/2 md:px-4 md:py-2">
+				<div className="mt-8 mb-2.5 flex flex-col justify-center overflow-auto px-8 md:mt-auto md:mr-0.5 md:mb-auto md:ml-1 md:w-1/2 md:px-1 md:py-2 lg:mr-10 lg:ml-6 lg:px-4">
 					<p className="font-acme hover:text-orange mb-2.5 cursor-pointer text-lg transition-colors">
 						{title}
 					</p>
@@ -72,7 +72,7 @@ export const EventCard: FC<Event> = ({
 						</Link>
 					</p>
 				</div>
-				<div className="flex justify-center gap-4 px-4 md:flex-col md:gap-2.5">
+				<div className="flex justify-center gap-4 px-4 md:flex-col md:gap-2.5 md:px-2 lg:px-4">
 					<Button>Bilet Al</Button>
 					<AddToCalendarButton onClick={() => toggleCalendar(id)} isAdded={in_calendar} />
 				</div>
