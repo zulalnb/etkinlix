@@ -40,7 +40,7 @@ export const SearchInput = () => {
 					onChange={handleChange}
 					value={title}
 					required
-					className="h-10 w-full border border-light-gray bg-white px-4 py-2 pl-10 text-sm text-black placeholder:text-medium-gray hover:border-medium-gray focus:border-pink focus:ring-pink"
+					className="border-light-gray placeholder:text-medium-gray hover:border-medium-gray focus:border-pink focus:ring-pink focus-visible:outline-pink h-10 w-full border bg-white px-4 py-2 pl-10 text-sm text-black focus-visible:outline-1"
 				/>
 			</label>
 		</form>
