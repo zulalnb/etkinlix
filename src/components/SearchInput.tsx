@@ -27,7 +27,7 @@ export const SearchInput = () => {
 			<div className="absolute inset-y-0 left-0">
 				<button
 					type="button"
-					className="inline-flex aspect-square w-10 items-center justify-center text-black group-invalid:pointer-events-none group-invalid:opacity-80"
+					className="inline-flex aspect-square h-full items-center justify-center text-black group-invalid:pointer-events-none group-invalid:opacity-80"
 				>
 					<span className="sr-only">ara</span>
 					<Icon name="search" />
@@ -43,7 +43,7 @@ export const SearchInput = () => {
 					onChange={handleChange}
 					value={title}
 					required
-					className="border-light-gray placeholder:text-medium-gray hover:border-medium-gray focus:border-pink focus:ring-pink focus-visible:outline-pink h-10 w-full border bg-white px-4 py-2 pl-10 text-sm text-black focus-visible:outline-1"
+					className="border-light-gray placeholder:text-medium-gray hover:border-medium-gray focus:border-pink focus:ring-pink focus-visible:outline-pink h-12 w-full border bg-white px-4 py-2 pl-12 text-sm text-black focus-visible:outline-1"
 				/>
 			</label>
 		</form>

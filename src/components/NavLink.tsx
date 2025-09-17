@@ -11,10 +11,13 @@ export const NavLink: FC<ButtonProps> = ({ children, isActive = false, ...rest }
 		<li className="inline-flex">
 			<button
 				type="button"
-				className={clsx("inline-flex items-center border-b-4", {
-					"border-pink font-bold text-pink": isActive,
-					"border-transparent transition-colors hover:text-pink/80": !isActive,
-				})}
+				className={clsx(
+					"after:bg-pink relative inline-flex transition-colors after:absolute after:bottom-0 after:left-1/2 after:h-1 after:-translate-x-1/2 after:transition-[width] after:duration-300 after:content-[''] hover:after:w-full",
+					{
+						"text-pink font-bold after:w-full": isActive,
+						"hover:text-pink/80 after:w-0": !isActive,
+					},
+				)}
 				{...rest}
 			>
 				{children}
