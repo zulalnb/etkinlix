@@ -10,7 +10,7 @@ export const EventType: React.FC<EventTypeProps> = ({ type = "Tiyatro", classNam
 	return (
 		<span
 			className={clsx(
-				"px-5 py-0.5 text-center text-sm font-bold uppercase tracking-wider text-white",
+				"px-5 py-0.5 text-center text-sm font-bold tracking-wider text-white uppercase",
 				{
 					"bg-purple": type.toLowerCase() === "tiyatro",
 					"bg-orange": type.toLowerCase() === "stand-up",

@@ -5,10 +5,10 @@ export interface Event {
 	location: string;
 	image: string;
 	date: string;
-	type: EventType;
+	type: Type;
 	isAddedToCalendar: boolean;
 }
 
-export type EventType = "Tiyatro" | "Stand-up" | "Sinema" | "Konser" | "Çocuk";
+export type Type = "Tiyatro" | "Stand-up" | "Sinema" | "Konser" | "Çocuk";
 
 export type Events = Event[];

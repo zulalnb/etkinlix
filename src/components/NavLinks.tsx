@@ -1,9 +1,9 @@
 "use client";
 import { useEvent } from "@/context/EventProvider";
 import { NavLink } from "./NavLink";
-import { EventType } from "@/types/Event";
+import { Type } from "@/types/Event";
 
-const pathnames: EventType[] = ["Tiyatro", "Konser", "Stand-up", "Sinema", "Çocuk"];
+const pathnames: Type[] = ["Tiyatro", "Konser", "Stand-up", "Sinema", "Çocuk"];
 
 export const NavLinks = () => {
 	const { state, dispatch } = useEvent();
@@ -11,7 +11,7 @@ export const NavLinks = () => {
 		dispatch({ type: "FILTER_ALL" });
 	};
 
-	const filterByType = (eventType: EventType) => {
+	const filterByType = (eventType: Type) => {
 		dispatch({ type: "FILTER_BY_TYPE", eventType });
 	};
 	return (
