@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Acme } from "next/font/google";
 import "./globals.css";
+import { EventProvider } from "@/context/EventProvider";
 import { Header } from "@/components/Header";
 import { SecondaryHeader } from "@/components/SecondaryHeader";
-import { EventProvider } from "@/context/EventProvider";
 
 // Load the font
 const galanoGrotesque = localFont({

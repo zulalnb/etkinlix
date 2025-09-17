@@ -7,7 +7,7 @@
 		"image": "/assets/images/bkm-yaz-etkinlikleri-zengin-mutfagi.png",
 		"date": "2025-09-07T21:15:00+03:00",
 		"type": "Tiyatro",
-		"isAddedToCalendar": false
+		"in_calendar": false
 	},
 	{
 		"id": 2,
@@ -17,7 +17,7 @@
 		"image": "/assets/images/yasemin-sakallioglu.png",
 		"date": "2025-09-07T21:15:00+03:00",
 		"type": "Stand-up",
-		"isAddedToCalendar": false
+		"in_calendar": false
 	},
 	{
 		"id": 3,
@@ -27,7 +27,7 @@
 		"image": "/assets/images/kin.png",
 		"date": "2025-09-07T21:15:00+03:00",
 		"type": "Sinema",
-		"isAddedToCalendar": false
+		"in_calendar": false
 	},
 	{
 		"id": 4,
@@ -37,6 +37,6 @@
 		"image": "/assets/images/sinema-keyfi-rifkins-festival.png",
 		"date": "2025-09-07T21:15:00+03:00",
 		"type": "Sinema",
-		"isAddedToCalendar": false
+		"in_calendar": false
 	}
 ]

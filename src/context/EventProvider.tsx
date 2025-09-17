@@ -41,10 +41,10 @@ const eventReducer = (state: State, action: Action): State => {
 			return {
 				...state,
 				events: state.events.map((event) =>
-					event.id === action.id ? { ...event, isAddedToCalendar: !event.isAddedToCalendar } : event,
+					event.id === action.id ? { ...event, in_calendar: !event.in_calendar } : event,
 				),
 				filteredEvents: state.filteredEvents.map((event) =>
-					event.id === action.id ? { ...event, isAddedToCalendar: !event.isAddedToCalendar } : event,
+					event.id === action.id ? { ...event, in_calendar: !event.in_calendar } : event,
 				),
 			};
 

@@ -26,7 +26,7 @@ export const EventList: FC = () => {
 						date={event.date}
 						location={event.location}
 						image={event.image}
-						isAddedToCalendar={event.isAddedToCalendar}
+						in_calendar={event.in_calendar}
 					/>
 				))}
 		</div>

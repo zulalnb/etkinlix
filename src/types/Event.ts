@@ -6,7 +6,7 @@ export interface Event {
 	image: string;
 	date: string;
 	type: Type;
-	isAddedToCalendar: boolean;
+	in_calendar: boolean;
 }
 
 export type Type = "Tiyatro" | "Stand-up" | "Sinema" | "Konser" | "Çocuk";

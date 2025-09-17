@@ -21,7 +21,7 @@ export const EventCard: FC<Event> = ({
 	location,
 	type,
 	image,
-	isAddedToCalendar,
+	in_calendar,
 }) => {
 	const isMobile = useMobileView();
 	const { dispatch } = useEvent();
@@ -74,7 +74,7 @@ export const EventCard: FC<Event> = ({
 				</div>
 				<div className="flex justify-center gap-4 px-4 md:flex-col md:gap-2.5">
 					<Button>Bilet Al</Button>
-					<AddToCalendarButton onClick={() => toggleCalendar(id)} isAdded={isAddedToCalendar} />
+					<AddToCalendarButton onClick={() => toggleCalendar(id)} isAdded={in_calendar} />
 				</div>
 			</div>
 		</div>
