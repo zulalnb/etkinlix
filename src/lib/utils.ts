@@ -1,8 +1,8 @@
-export const clipText = (string: string, wordCount = 24) => {
-	const words = string.split(" ");
-	if (words.length > wordCount) {
-		return words.slice(0, wordCount - 1).join(" ");
-	} else {
-		return string;
-	}
+export const clipText = (str: string, limit = 145) => {
+	if (str.length <= limit) return str;
+
+	return str.split(" ").reduce((acc, word) => {
+		if ((acc + " " + word).trim().length > limit) return acc;
+		return (acc + " " + word).trim();
+	}, "");
 };

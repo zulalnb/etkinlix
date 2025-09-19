@@ -32,7 +32,7 @@ export const EventCard: FC<Event> = ({
 	};
 
 	return (
-		<div className="border-light-gray mx-auto mb-4 h-112 w-full border md:h-51 md:max-w-9/10 xl:max-w-83/100">
+		<div className="border-light-gray mx-auto mb-4 h-112 w-full border md:h-51 md:w-9/10 xl:w-83/100">
 			<div className="h-full w-full md:flex">
 				<div className="relative h-56.75 w-full md:h-full md:w-1/2 md:shrink-0 lg:w-11/20 lg:shrink">
 					<div className="absolute top-0 z-10 h-52 w-full bg-black md:left-0 md:h-full md:w-1/2 lg:w-12/25">
@@ -65,7 +65,7 @@ export const EventCard: FC<Event> = ({
 						<span className="text-medium-gray text-sm">{location}</span>
 					</div>
 					<p>
-						{clipText(description, isMobile ? 4 : 24)}
+						{clipText(description, isMobile ? 20 : 145)}
 						{"... "}
 						<Link href="#" className="font-acme font-bold underline">
 							Detaylı Bilgi
