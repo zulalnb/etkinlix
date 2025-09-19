@@ -32,13 +32,13 @@ export const EventCard: FC<Event> = ({
 	};
 
 	return (
-		<div className="border-light-gray mx-auto mb-4 h-112 w-full border md:h-51 md:max-w-9/10">
+		<div className="border-light-gray mx-auto mb-4 h-112 w-full border md:h-51 md:max-w-9/10 xl:max-w-83/100">
 			<div className="h-full w-full md:flex">
-				<div className="relative h-60 w-full md:h-full md:w-1/2 md:shrink-0 lg:w-11/20 lg:shrink">
+				<div className="relative h-56.75 w-full md:h-full md:w-1/2 md:shrink-0 lg:w-11/20 lg:shrink">
 					<div className="absolute top-0 z-10 h-52 w-full bg-black md:left-0 md:h-full md:w-1/2 lg:w-12/25">
 						<div className="mt-2 flex justify-center space-x-1 md:mt-auto md:h-full md:w-2/5 md:flex-col md:space-x-0 lg:w-1/2">
 							{moment(date)
-								.format("D MMMM dddd HH:mm")
+								.format(`D MMMM ${isMobile ? "ddd" : "dddd"} HH:mm`)
 								.split(" ")
 								.map((d) => (
 									<span key={d} className="font-acme md:text-pink text-center text-white md:inline-block">
@@ -47,12 +47,12 @@ export const EventCard: FC<Event> = ({
 								))}
 						</div>
 					</div>
-					<div className="absolute bottom-0 z-20 h-48 w-full md:right-0 md:bottom-auto md:h-full md:w-4/5 lg:w-3/4">
-						<div className="relative flex h-full w-full items-center justify-center">
-							<div className="relative aspect-square h-full w-4/5 overflow-hidden md:h-3/4 md:w-full">
+					<div className="absolute bottom-0 z-20 h-43.25 w-full md:right-0 md:bottom-auto md:h-full md:w-4/5 lg:w-3/4">
+						<div className="relative aspect-square h-full w-full px-4 md:px-0 md:py-4">
+							<div className="relative h-full w-full overflow-hidden">
 								<Image src={image} alt={title} fill className="absolute inset-0 object-cover object-center" />
 							</div>
-							<EventType type={type} className="absolute -top-10 -left-6 z-30 sm:-left-3 md:top-10" />
+							<EventType type={type} className="absolute -top-10 -left-6 z-30 sm:-left-3 md:top-8" />
 						</div>
 					</div>
 				</div>
