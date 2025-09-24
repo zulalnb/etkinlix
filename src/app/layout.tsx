@@ -55,6 +55,12 @@ export default function RootLayout({
 	return (
 		<html lang="tr">
 			<body className={`${galanoGrotesque.variable} ${acme.variable}`}>
+				<a
+					href="#main-content"
+					className="focus:text-pink absolute -top-10 left-0 z-1000 bg-white px-3 py-2 text-black transition-[top] duration-200 ease-in focus:top-2 focus:outline-2 focus:outline-solid"
+				>
+					İçeriğe atla
+				</a>
 				<EventProvider>
 					<Header />
 					<SecondaryHeader />

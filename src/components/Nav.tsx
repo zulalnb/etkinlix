@@ -3,7 +3,7 @@ import { SearchInput } from "./SearchInput";
 
 export const Nav = () => {
 	return (
-		<nav className="relative mt-10 flex h-20 w-full items-end">
+		<nav aria-label="Etkinlik kategorileri" className="relative mt-10 flex h-20 w-full items-end">
 			<ul className="mx-auto flex h-13.25 gap-5 overflow-x-scroll px-4 whitespace-nowrap md:gap-8 md:px-0">
 				<NavLinks />
 			</ul>

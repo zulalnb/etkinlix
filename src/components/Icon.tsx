@@ -23,5 +23,5 @@ export const Icon: React.FC<IconProps> = ({ name, size = 24, ...rest }) => {
 
 	if (!IconComponent) return null;
 
-	return <IconComponent {...rest} width={size} height={size} />;
+	return <IconComponent aria-hidden="true" {...rest} width={size} height={size} />;
 };

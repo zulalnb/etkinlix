@@ -41,7 +41,10 @@ export const EventCard: FC<Event> = ({
 								.format(`D MMMM ${isMobile ? "ddd" : "dddd"} HH:mm`)
 								.split(" ")
 								.map((d) => (
-									<span key={d} className="font-acme md:text-pink text-center text-white md:inline-block">
+									<span
+										key={d}
+										className="font-acme md:text-pink text-center leading-normal text-white md:inline-block"
+									>
 										{d}
 									</span>
 								))}
@@ -57,9 +60,9 @@ export const EventCard: FC<Event> = ({
 					</div>
 				</div>
 				<div className="mt-8 mb-2.5 flex flex-col justify-center overflow-auto px-8 md:mt-auto md:mr-0.5 md:mb-auto md:ml-1 md:w-1/2 md:px-1 md:py-2 lg:mr-10 lg:ml-6 lg:px-4">
-					<p className="font-acme hover:text-orange mb-2.5 cursor-pointer text-lg transition-colors">
+					<h3 className="font-acme hover:text-orange mb-2.5 cursor-pointer text-lg transition-colors">
 						{title}
-					</p>
+					</h3>
 					<div className="mb-2.5 flex items-center space-x-1">
 						<Icon name="location" size={14} className="text-medium-gray" />
 						<span className="text-medium-gray text-sm">{location}</span>

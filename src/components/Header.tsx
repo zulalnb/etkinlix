@@ -7,7 +7,7 @@ export const Header = () => {
 			<div className="container mx-auto">
 				<div className="flex flex-col items-center">
 					<Logo />
-					<h1 className="mt-10 text-center text-4xl font-bold">ETKİNLİX</h1>
+					<h1 className="mt-10 text-center text-[2rem]/tight font-bold">ETKİNLİX</h1>
 					<Nav />
 				</div>
 			</div>

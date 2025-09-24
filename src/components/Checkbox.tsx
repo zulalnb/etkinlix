@@ -5,7 +5,7 @@ interface CheckboxProps<TName extends string> {
 
 export const Checkbox = <TName extends string>({ name, label }: CheckboxProps<TName>) => {
 	return (
-		<label className="relative block cursor-pointer py-3 pl-7.5 select-none">
+		<label className="relative block cursor-pointer py-2.25 pl-7.5 select-none">
 			<input
 				id={name}
 				name={name}

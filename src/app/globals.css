@@ -41,9 +41,17 @@
 	a[href] {
 		@apply cursor-pointer;
 	}
-}
 
-body {
-	font-family: var(--font-galano), sans-serif;
-	scroll-behavior: smooth;
+	button:focus-visible,
+	a:focus-visible,
+	input:focus-visible,
+	select:focus-visible,
+	textarea:focus-visible,
+	[role="button"]:focus-visible {
+		@apply outline-pink outline-2 outline-offset-2 outline-solid;
+	}
+
+	body {
+		@apply font-galano scroll-smooth text-base/relaxed;
+	}
 }

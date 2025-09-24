@@ -13,7 +13,7 @@ export const AddToCalendarButton: FC<ButtonProps> = ({ isAdded = false, ...rest 
 				name={isAdded ? "confirm" : "add"}
 				size={22}
 				className={clsx("mr-2", {
-					"transition-colors group-hover:text-pink": !isAdded,
+					"group-hover:text-pink transition-colors": !isAdded,
 					"text-pink": isAdded,
 				})}
 			/>
