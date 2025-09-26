@@ -21,9 +21,9 @@ export const EventList: FC = () => {
 				</div>
 			)}
 			{state.filteredEvents && (
-				<ul aria-labelledby="events-heading">
+				<ul aria-labelledby="events-heading" className="mx-auto w-full md:w-9/10 xl:w-83/100">
 					{state.filteredEvents.map((event: Event) => (
-						<li key={event.id}>
+						<li key={event.id} className="mb-4 w-full">
 							<EventCard
 								id={event.id}
 								title={event.title}

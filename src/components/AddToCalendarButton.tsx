@@ -6,13 +6,16 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	isAdded?: boolean;
 }
 
-export const AddToCalendarButton: FC<ButtonProps> = ({ isAdded = false, ...rest }) => {
+export const AddToCalendarButton: FC<ButtonProps> = ({ isAdded = false, className, ...rest }) => {
 	return (
-		<button className="group flex items-center text-black" {...rest}>
+		<button
+			className={clsx("group flex min-w-40 items-center whitespace-nowrap text-black", className)}
+			{...rest}
+		>
 			<Icon
 				name={isAdded ? "confirm" : "add"}
 				size={22}
-				className={clsx("mr-2", {
+				className={clsx("xs:mr-2.5 mr-1 shrink-0", {
 					"group-hover:text-pink transition-colors": !isAdded,
 					"text-pink": isAdded,
 				})}

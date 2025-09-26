@@ -9,7 +9,7 @@ export const Button: FC<ButtonProps> = ({ children, className, ...rest }) => {
 	return (
 		<button
 			className={clsx(
-				"bg-pink focus-visible:outline-pink px-11 py-2.5 font-bold whitespace-nowrap text-white transition-shadow hover:shadow-[inset_0_0_0_100px_rgba(0,0,0,.2)] focus-visible:outline-2 focus-visible:outline-offset-2 md:px-14",
+				"bg-pink focus-visible:outline-pink xs:px-11.25 px-7.5 py-2.5 leading-[1.75] font-bold whitespace-nowrap text-white transition-shadow hover:shadow-[inset_0_0_0_100px_rgba(0,0,0,.2)] focus-visible:outline-2 focus-visible:outline-offset-2 md:px-13.75",
 				className,
 			)}
 			{...rest}

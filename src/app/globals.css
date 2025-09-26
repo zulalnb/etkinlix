@@ -14,6 +14,8 @@
 	--color-medium-gray: #9c9c9c;
 	--color-light-gray: #dedede;
 	--color-extra-light-gray: #f5f5f5;
+
+	--breakpoint-xs: 23rem; /* 368px */
 }
 
 /*

@@ -12,6 +12,7 @@ import { useMobileView } from "@/hooks/useMobileMenu";
 import { clipText } from "@/lib/utils";
 import { Event } from "@/types/Event";
 import moment from "@/lib/moment-config";
+import clsx from "clsx";
 
 export const EventCard: FC<Event> = ({
 	id,
@@ -32,53 +33,65 @@ export const EventCard: FC<Event> = ({
 	};
 
 	return (
-		<div className="border-light-gray mx-auto mb-4 h-112 w-full border md:h-51 md:w-9/10 xl:w-83/100">
-			<div className="h-full w-full md:flex">
-				<div className="relative h-56.75 w-full md:h-full md:w-1/2 md:shrink-0 lg:w-11/20 lg:shrink">
-					<div className="absolute top-0 z-10 h-52 w-full bg-black md:left-0 md:h-full md:w-1/2 lg:w-12/25">
-						<div className="mt-2 flex justify-center space-x-1 md:mt-auto md:h-full md:w-2/5 md:flex-col md:space-x-0 lg:w-1/2">
-							{moment(date)
-								.format(`D MMMM ${isMobile ? "ddd" : "dddd"} HH:mm`)
-								.split(" ")
-								.map((d) => (
-									<span
-										key={d}
-										className="font-acme md:text-pink text-center leading-normal text-white md:inline-block"
-									>
-										{d}
-									</span>
-								))}
+		<div className="border-light-gray flex h-112 w-full flex-col border pr-0 md:h-51 md:flex-row md:pr-4">
+			<div className="relative h-56.75 w-full md:h-full md:w-1/2 md:shrink-0 lg:w-46/100 lg:shrink">
+				<div className="absolute top-0 z-10 flex h-52 w-full items-start justify-center bg-black md:left-0 md:h-full md:w-1/2 md:items-center md:justify-start lg:w-12/25">
+					<div className="mt-2.75 flex items-baseline space-x-0.75 md:mt-0 md:w-2/5 md:flex-col md:items-center md:space-x-0 lg:w-1/2">
+						{moment(date)
+							.format(`D MMMM ${isMobile ? "ddd" : "dddd"} HH:mm`)
+							.split(" ")
+							.map((d, i) => (
+								<span
+									key={d}
+									className={clsx("text-center md:inline-block", {
+										"font-acme md:text-pink text-2xl/snug text-white md:text-base/normal": i === 0,
+										"font-acme md:text-pink leading-normal text-white": i === 1,
+										"font-galano md:font-acme md:text-pink text-light-gray leading-normal": i === 2,
+										"font-galano md:font-acme md:text-pink text-medium-gray md:leading-normal": i === 3,
+									})}
+								>
+									{d}
+								</span>
+							))}
+					</div>
+				</div>
+				<div className="absolute bottom-0 z-20 h-43.25 w-full md:right-0 md:bottom-auto md:h-full md:w-4/5 lg:w-3/4">
+					<div className="relative aspect-square h-full w-full px-4 md:px-0 md:py-4">
+						<div className="relative h-full w-full overflow-hidden">
+							<Image
+								src={image}
+								alt={title}
+								fill
+								priority
+								className="absolute inset-0 object-cover object-center"
+							/>
 						</div>
-					</div>
-					<div className="absolute bottom-0 z-20 h-43.25 w-full md:right-0 md:bottom-auto md:h-full md:w-4/5 lg:w-3/4">
-						<div className="relative aspect-square h-full w-full px-4 md:px-0 md:py-4">
-							<div className="relative h-full w-full overflow-hidden">
-								<Image src={image} alt={title} fill className="absolute inset-0 object-cover object-center" />
-							</div>
-							<EventType type={type} className="absolute -top-10 -left-6 z-30 sm:-left-3 md:top-8" />
-						</div>
+						<EventType
+							type={type}
+							className="xs:-left-1/16 absolute -top-10 -left-4.5 z-30 sm:-left-3 md:top-8"
+						/>
 					</div>
 				</div>
-				<div className="mt-8 mb-2.5 flex flex-col justify-center overflow-auto px-8 md:mt-auto md:mr-0.5 md:mb-auto md:ml-1 md:w-1/2 md:px-1 md:py-2 lg:mr-10 lg:ml-6 lg:px-4">
-					<h3 className="font-acme hover:text-orange mb-2.5 cursor-pointer text-lg transition-colors">
-						{title}
-					</h3>
-					<div className="mb-2.5 flex items-center space-x-1">
-						<Icon name="location" size={14} className="text-medium-gray" />
-						<span className="text-medium-gray text-sm">{location}</span>
-					</div>
-					<p>
-						{clipText(description, isMobile ? 20 : 145)}
-						{"... "}
-						<Link href="#" className="font-acme font-bold underline">
-							Detaylı Bilgi
-						</Link>
-					</p>
+			</div>
+			<div className="xs:px-8 mt-8 flex flex-col justify-center overflow-hidden px-6 md:mt-0 md:ml-4 md:w-1/2 md:px-0 md:py-2">
+				<h3 className="font-acme hover:text-orange xs:mb-2.5 mb-1 cursor-pointer text-lg transition-colors">
+					{title}
+				</h3>
+				<div className="xs:mb-2.5 mb-1 flex items-center space-x-1">
+					<Icon name="location" size={14} className="text-medium-gray" />
+					<span className="text-medium-gray text-sm">{location}</span>
 				</div>
-				<div className="flex justify-center gap-4 px-4 md:flex-col md:gap-2.5 md:px-2 lg:px-4">
-					<Button>Bilet Al</Button>
-					<AddToCalendarButton onClick={() => toggleCalendar(id)} isAdded={in_calendar} />
-				</div>
+				<p>
+					{clipText(description, isMobile ? 20 : 145)}
+					{"... "}
+					<Link href="#" className="font-acme font-bold underline">
+						Detaylı Bilgi
+					</Link>
+				</p>
+			</div>
+			<div className="xs:gap-4 xs:px-4 mt-auto mb-4 flex items-center justify-center gap-1 px-0.5 md:mt-0 md:mb-0 md:ml-4 md:flex-col md:items-start md:gap-2.5 md:px-0">
+				<Button>Bilet Al</Button>
+				<AddToCalendarButton onClick={() => toggleCalendar(id)} isAdded={in_calendar} />
 			</div>
 		</div>
 	);
