@@ -56,14 +56,15 @@ export const EventCard: FC<Event> = ({
 					</div>
 				</div>
 				<div className="absolute bottom-0 z-20 h-43.25 w-full md:right-0 md:bottom-auto md:h-full md:w-4/5 lg:w-3/4">
-					<div className="relative aspect-square h-full w-full px-4 md:px-0 md:py-4">
+					<div className="relative h-full w-full px-4 md:px-0 md:py-4">
 						<div className="relative h-full w-full overflow-hidden">
 							<Image
 								src={image}
 								alt={title}
 								fill
 								priority
-								className="absolute inset-0 object-cover object-center"
+								sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 75vw"
+								className="object-cover"
 							/>
 						</div>
 						<EventType
