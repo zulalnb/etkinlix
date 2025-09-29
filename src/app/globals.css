@@ -2,8 +2,8 @@
 @plugin "@tailwindcss/forms";
 
 @theme {
-	--font-acme: var(--font-acme);
-	--font-galano: var(--font-galano);
+	--font-acme: var(--font-acme) sans-serif;
+	--font-galano: var(--font-galano) sans-serif;
 
 	--color-pink: #ff0d87;
 	--color-dark-pink: #e5107c;
