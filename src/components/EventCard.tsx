@@ -2,7 +2,6 @@
 
 import { type FC } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import clsx from "clsx";
 import { Event } from "@/types/Event";
 import { useEvent } from "@/context/EventProvider";
@@ -12,6 +11,7 @@ import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { AddToCalendarButton } from "./AddToCalendarButton";
 import { EventType } from "./EventType";
+import { EventImageWrapper } from "./EventImageWrapper";
 
 type EventCardProps = Event & {
 	isFirst?: boolean;
@@ -61,18 +61,14 @@ export const EventCard: FC<EventCardProps> = ({
 				</div>
 				<div className="absolute bottom-0 z-20 h-43.25 w-full md:right-0 md:bottom-auto md:h-full md:w-4/5 lg:w-3/4">
 					<div className="relative h-full w-full px-4 md:px-0 md:py-4">
-						<div className="relative h-full w-full overflow-hidden">
-							<Image
-								src={image}
-								alt={title}
-								fill
-								loading={isFirst ? "eager" : "lazy"}
-								priority={isFirst}
-								fetchPriority={isFirst ? "high" : "auto"}
-								sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 75vw"
-								className="object-cover"
-							/>
-						</div>
+						<EventImageWrapper
+							src={image}
+							alt={title}
+							fill
+							loading={isFirst ? "eager" : "lazy"}
+							priority={isFirst}
+							fetchPriority={isFirst ? "high" : "auto"}
+						/>
 						<EventType
 							type={type}
 							className="xs:-left-1/16 absolute -top-10 -left-4.5 z-30 sm:-left-3 md:top-8"
