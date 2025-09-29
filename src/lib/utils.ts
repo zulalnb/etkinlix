@@ -11,5 +11,4 @@ export const truncateText = (str: string, limit = 145) => {
 		.reduce((acc, word) => ((acc + " " + word).trim().length > limit ? acc : (acc + " " + word).trim()), "");
 };
 
-export const formatEventDate = (date: string, isWide: boolean) =>
-	dayjs(date).format(`D MMMM ${!isWide ? "ddd" : "dddd"} HH:mm`);
+export const formatEventDate = (date: string) => dayjs(date).format(`D MMMM ddd HH:mm`);
