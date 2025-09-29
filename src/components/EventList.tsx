@@ -22,18 +22,9 @@ export const EventList: FC = () => {
 			)}
 			{state.filteredEvents && (
 				<ul aria-labelledby="events-heading" className="mx-auto w-full md:w-9/10 xl:w-83/100">
-					{state.filteredEvents.map((event: Event) => (
+					{state.filteredEvents.map((event: Event, index: number) => (
 						<li key={event.id} className="mb-4 w-full">
-							<EventCard
-								id={event.id}
-								title={event.title}
-								description={event.description}
-								type={event.type}
-								date={event.date}
-								location={event.location}
-								image={event.image}
-								in_calendar={event.in_calendar}
-							/>
+							<EventCard {...event} isFirst={index === 0} />
 						</li>
 					))}
 				</ul>
