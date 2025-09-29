@@ -31,6 +31,7 @@ const galanoGrotesque = localFont({
 		},
 	],
 	variable: "--font-galano",
+	display: "swap",
 });
 
 const acme = Acme({
