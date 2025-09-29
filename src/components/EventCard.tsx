@@ -5,13 +5,14 @@ import Link from "next/link";
 import clsx from "clsx";
 import { Event } from "@/types/Event";
 import { useEvent } from "@/context/EventProvider";
-import useMedia from "@/hooks/useMedia";
+// import useMedia from "@/hooks/useMedia";
 import { clipText, formatEventDate } from "@/lib/utils";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { AddToCalendarButton } from "./AddToCalendarButton";
 import { EventType } from "./EventType";
 import { EventImageWrapper } from "./EventImageWrapper";
+import useBetterMediaQuery from "@/hooks/useMediaQuery";
 
 type EventCardProps = Event & {
 	isFirst?: boolean;
@@ -28,7 +29,8 @@ export const EventCard: FC<EventCardProps> = ({
 	in_calendar,
 	isFirst,
 }) => {
-	const isWide = useMedia("(min-width: 1024px)", false);
+	// const isWide = useMedia("(min-width: 1024px)", false);
+	const isWide = useBetterMediaQuery("(min-width: 1024px)");
 
 	const { dispatch } = useEvent();
 
@@ -42,7 +44,7 @@ export const EventCard: FC<EventCardProps> = ({
 			<div className="relative h-56.75 w-full md:h-full md:w-1/2 md:shrink-0 lg:w-46/100 lg:shrink">
 				<div className="absolute -top-px -right-px -left-px z-10 flex h-52 items-start justify-center bg-black md:right-auto md:-bottom-px md:h-auto md:w-1/2 md:items-center md:justify-start lg:w-12/25">
 					<div className="mt-2.75 flex items-baseline space-x-0.75 md:mt-0 md:w-2/5 md:flex-col md:items-center md:space-x-0 lg:w-1/2">
-						{formatEventDate(date, isWide)
+						{formatEventDate(date, isWide ? true : false)
 							.split(" ")
 							.map((d, i) => (
 								<span
