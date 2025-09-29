@@ -1,4 +1,7 @@
-import moment from "./moment-config";
+import dayjs from "dayjs";
+import "dayjs/locale/tr";
+
+dayjs.locale("tr");
 
 export const clipText = (str: string, limit = 145) => {
 	if (str.length <= limit) return str;
@@ -9,4 +12,4 @@ export const clipText = (str: string, limit = 145) => {
 };
 
 export const formatEventDate = (date: string, isWide: boolean) =>
-	moment(date).format(`D MMMM ${!isWide ? "ddd" : "dddd"} HH:mm`);
+	dayjs(date).format(`D MMMM ${!isWide ? "ddd" : "dddd"} HH:mm`);
