@@ -3,7 +3,7 @@ import "dayjs/locale/tr";
 
 dayjs.locale("tr");
 
-export const clipText = (str: string, limit = 145) => {
+export const truncateText = (str: string, limit = 145) => {
 	if (str.length <= limit) return str;
 
 	return str
