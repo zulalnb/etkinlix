@@ -79,8 +79,8 @@ export const EventCard: FC<EventCardProps> = ({
 					<Icon name="location" size={14} className="text-medium-gray" />
 					<span className="text-medium-gray text-sm">{location}</span>
 				</div>
-				<p>
-					{truncateText(description, 20)}
+				<p className="line-clamp-2 lg:line-clamp-3">
+					{description}
 					{"... "}
 					<Link href="#" className="font-acme font-bold underline">
 						Detaylı Bilgi
