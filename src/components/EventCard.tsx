@@ -68,6 +68,7 @@ export const EventCard: FC<EventCardProps> = ({
 								fill
 								loading={isFirst ? "eager" : "lazy"}
 								priority={isFirst}
+								fetchPriority={isFirst ? "high" : "auto"}
 								sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 75vw"
 								className="object-cover"
 							/>
