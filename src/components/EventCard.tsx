@@ -3,16 +3,16 @@
 import { type FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { EventType } from "./EventType";
-import { Button } from "./Button";
-import { AddToCalendarButton } from "./AddToCalendarButton";
-import { Icon } from "./Icon";
-import { useEvent } from "@/context/EventProvider";
-import { useMobileView } from "@/hooks/useMobileMenu";
-import { clipText } from "@/lib/utils";
-import { Event } from "@/types/Event";
-import moment from "@/lib/moment-config";
 import clsx from "clsx";
+import { Event } from "@/types/Event";
+import { useEvent } from "@/context/EventProvider";
+import useMedia from "@/hooks/useMedia";
+import { clipText } from "@/lib/utils";
+import moment from "@/lib/moment-config";
+import { Button } from "./Button";
+import { Icon } from "./Icon";
+import { AddToCalendarButton } from "./AddToCalendarButton";
+import { EventType } from "./EventType";
 
 export const EventCard: FC<Event> = ({
 	id,
@@ -24,7 +24,8 @@ export const EventCard: FC<Event> = ({
 	image,
 	in_calendar,
 }) => {
-	const isMobile = useMobileView();
+	const isWide = useMedia("(min-width: 1024px)");
+
 	const { dispatch } = useEvent();
 
 	// Add event to calendar
@@ -38,7 +39,7 @@ export const EventCard: FC<Event> = ({
 				<div className="absolute -top-px -right-px -left-px z-10 flex h-52 items-start justify-center bg-black md:right-auto md:-bottom-px md:h-auto md:w-1/2 md:items-center md:justify-start lg:w-12/25">
 					<div className="mt-2.75 flex items-baseline space-x-0.75 md:mt-0 md:w-2/5 md:flex-col md:items-center md:space-x-0 lg:w-1/2">
 						{moment(date)
-							.format(`D MMMM ${isMobile ? "ddd" : "dddd"} HH:mm`)
+							.format(`D MMMM ${!isWide ? "ddd" : "dddd"} HH:mm`)
 							.split(" ")
 							.map((d, i) => (
 								<span
@@ -74,7 +75,7 @@ export const EventCard: FC<Event> = ({
 					</div>
 				</div>
 			</div>
-			<div className="xs:px-8 mt-8 flex flex-col justify-center overflow-hidden px-6 md:mt-0 md:ml-4 md:w-1/2 md:px-0 md:py-2">
+			<div className="mt-8 flex flex-col justify-center px-6 md:mt-0 md:ml-4 md:w-1/2 md:px-0">
 				<h3 className="font-acme hover:text-orange xs:mb-2.5 mb-1 cursor-pointer text-lg transition-colors">
 					{title}
 				</h3>
@@ -83,7 +84,7 @@ export const EventCard: FC<Event> = ({
 					<span className="text-medium-gray text-sm">{location}</span>
 				</div>
 				<p>
-					{clipText(description, isMobile ? 20 : 145)}
+					{clipText(description, isWide ? 145 : 20)}
 					{"... "}
 					<Link href="#" className="font-acme font-bold underline">
 						Detaylı Bilgi
