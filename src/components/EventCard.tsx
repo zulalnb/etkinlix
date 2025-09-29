@@ -28,7 +28,7 @@ export const EventCard: FC<EventCardProps> = ({
 	in_calendar,
 	isFirst,
 }) => {
-	const isWide = useMedia("(min-width: 1024px)");
+	const isWide = useMedia("(min-width: 1024px)", false);
 
 	const { dispatch } = useEvent();
 
