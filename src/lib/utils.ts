@@ -10,13 +10,13 @@ export type FormattedDateParts = {
 	time: string;
 };
 
-export const truncateText = (str: string, limit = 145) => {
-	if (str.length <= limit) return str;
+// export const truncateText = (str: string, limit = 145) => {
+// 	if (str.length <= limit) return str;
 
-	return str
-		.split(" ")
-		.reduce((acc, word) => ((acc + " " + word).trim().length > limit ? acc : (acc + " " + word).trim()), "");
-};
+// 	return str
+// 		.split(" ")
+// 		.reduce((acc, word) => ((acc + " " + word).trim().length > limit ? acc : (acc + " " + word).trim()), "");
+// };
 
 export function getEventDateParts(date: string): FormattedDateParts {
 	const dateObj = dayjs(date);

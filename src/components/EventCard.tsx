@@ -4,7 +4,7 @@ import { type FC } from "react";
 import Link from "next/link";
 import { Event } from "@/types/Event";
 import { useEvent } from "@/context/EventProvider";
-import { getEventDateParts, truncateText } from "@/lib/utils";
+import { getEventDateParts } from "@/lib/utils";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { AddToCalendarButton } from "./AddToCalendarButton";
