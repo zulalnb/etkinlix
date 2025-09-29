@@ -2,7 +2,6 @@
 
 import { type FC } from "react";
 import Link from "next/link";
-import clsx from "clsx";
 import { Event } from "@/types/Event";
 import { useEvent } from "@/context/EventProvider";
 import { getEventDateParts, truncateText } from "@/lib/utils";

@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
 
-dayjs.locale("tr");
+// dayjs.locale("tr");
 
 export type FormattedDateParts = {
 	day: string;
