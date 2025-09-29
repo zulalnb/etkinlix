@@ -3,6 +3,13 @@ import "dayjs/locale/tr";
 
 dayjs.locale("tr");
 
+export type FormattedDateParts = {
+	day: string;
+	month: string;
+	weekday: string;
+	time: string;
+};
+
 export const truncateText = (str: string, limit = 145) => {
 	if (str.length <= limit) return str;
 
@@ -11,4 +18,13 @@ export const truncateText = (str: string, limit = 145) => {
 		.reduce((acc, word) => ((acc + " " + word).trim().length > limit ? acc : (acc + " " + word).trim()), "");
 };
 
-export const formatEventDate = (date: string) => dayjs(date).format(`D MMMM ddd HH:mm`);
+export function getEventDateParts(date: string): FormattedDateParts {
+	const dateObj = dayjs(date);
+
+	return {
+		day: dateObj.format("D"),
+		month: dateObj.format("MMMM"),
+		weekday: dateObj.format("ddd"),
+		time: dateObj.format("HH:mm"),
+	};
+}
