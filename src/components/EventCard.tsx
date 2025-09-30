@@ -3,8 +3,9 @@
 import { type FC } from "react";
 import Link from "next/link";
 import { Event } from "@/types/Event";
+import useMedia from "@/hooks/useMedia";
 import { useEvent } from "@/context/EventProvider";
-import { getEventDateParts } from "@/lib/utils";
+import { getEventDateParts, truncateText } from "@/lib/utils";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
 import { AddToCalendarButton } from "./AddToCalendarButton";
@@ -28,7 +29,9 @@ export const EventCard: FC<EventCardProps> = ({
 }) => {
 	const { dispatch } = useEvent();
 
-	const parts = getEventDateParts(date);
+	const isWide = useMedia("(min-width: 1024px)", false);
+
+	const parts = getEventDateParts(date, isWide);
 
 	// Add event to calendar
 	const toggleCalendar = (id: number) => {
@@ -79,8 +82,8 @@ export const EventCard: FC<EventCardProps> = ({
 					<Icon name="location" size={14} className="text-medium-gray" />
 					<span className="text-medium-gray text-sm">{location}</span>
 				</div>
-				<p className="line-clamp-2 lg:line-clamp-3">
-					{description}
+				<p>
+					{truncateText(description, isWide ? 145 : 20)}
 					{"... "}
 					<Link href="#" className="font-acme font-bold underline">
 						Detaylı Bilgi
