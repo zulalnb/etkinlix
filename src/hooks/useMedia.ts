@@ -1,12 +1,12 @@
 // Source: https://github.com/streamich/react-use (MIT License)
-// Adapted for local use
+// Adapted for local use with hydration fix
 
 import { useEffect, useState } from "react";
 
 const isBrowser = typeof window !== "undefined";
 
 const getInitialState = (query: string, defaultState?: boolean) => {
-	// Prevent a React hydration mismatch when a default value is provided by not defaulting to window.matchMedia(query).matches.
+	// Prevent a React hydration mismatch when a default value is provided
 	if (defaultState !== undefined) {
 		return defaultState;
 	}
@@ -15,7 +15,7 @@ const getInitialState = (query: string, defaultState?: boolean) => {
 		return window.matchMedia(query).matches;
 	}
 
-	// A default value has not been provided, and you are rendering on the server, warn of a possible hydration mismatch when defaulting to false.
+	// A default value has not been provided, and you are rendering on the server
 	if (process.env.NODE_ENV !== "production") {
 		console.warn(
 			"`useMedia` When server side rendering, defaultState should be defined to prevent a hydration mismatches.",
@@ -27,12 +27,16 @@ const getInitialState = (query: string, defaultState?: boolean) => {
 
 const useMedia = (query: string, defaultState?: boolean) => {
 	const [state, setState] = useState(getInitialState(query, defaultState));
+	// Add mounted state to prevent hydration issues
+	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
-		let mounted = true;
+		setMounted(true);
+		let isMounted = true;
 		const mql = window.matchMedia(query);
+
 		const onChange = () => {
-			if (!mounted) {
+			if (!isMounted) {
 				return;
 			}
 			setState(!!mql.matches);
@@ -42,12 +46,13 @@ const useMedia = (query: string, defaultState?: boolean) => {
 		setState(mql.matches);
 
 		return () => {
-			mounted = false;
+			isMounted = false;
 			mql.removeEventListener("change", onChange);
 		};
 	}, [query]);
 
-	return state;
+	// Return defaultState until mounted to match server render
+	return mounted ? state : (defaultState ?? false);
 };
 
 export default useMedia;

@@ -11,13 +11,18 @@ import { SecondaryHeader } from "@/components/SecondaryHeader";
 const galanoGrotesque = localFont({
 	src: [
 		{
-			path: "./fonts/GalanoGrotesqueBold.otf",
-			weight: "700",
+			path: "./fonts/GalanoGrotesqueRegular.otf",
+			weight: "400",
 			style: "normal",
 		},
 		{
-			path: "./fonts/GalanoGrotesqueRegular.otf",
-			weight: "400",
+			path: "./fonts/GalanoGrotesqueMedium.otf",
+			weight: "500",
+			style: "normal",
+		},
+		{
+			path: "./fonts/GalanoGrotesqueBold.otf",
+			weight: "700",
 			style: "normal",
 		},
 	],
