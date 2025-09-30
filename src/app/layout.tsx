@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Acme } from "next/font/google";
@@ -57,6 +58,7 @@ export default function RootLayout({
 					<SecondaryHeader />
 					{children}
 				</EventProvider>
+				<SpeedInsights />
 			</body>
 		</html>
 	);
