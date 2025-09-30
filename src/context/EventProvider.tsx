@@ -1,4 +1,5 @@
 "use client";
+
 import React, { createContext, useContext, useReducer, ReactNode } from "react";
 import { Event, Type } from "@/types/Event";
 import events from "@/data/events.json";
@@ -18,10 +19,10 @@ interface State {
 	activeFilter: string;
 }
 
-// Initial state
+// Initial state - FIXED: filteredEvents should match events initially
 const initialState: State = {
 	events: events as Event[],
-	filteredEvents: [],
+	filteredEvents: events as Event[], // Changed from [] to events
 	activeFilter: "all",
 };
 
@@ -47,17 +48,14 @@ const eventReducer = (state: State, action: Action): State => {
 					event.id === action.id ? { ...event, in_calendar: !event.in_calendar } : event,
 				),
 			};
-
 		case "FILTER_ALL":
 			return { ...state, filteredEvents: state.events, activeFilter: "all" };
-
 		case "FILTER_BY_TYPE":
 			return {
 				...state,
 				filteredEvents: state.events.filter((event) => event.type === action.eventType),
 				activeFilter: action.eventType,
 			};
-
 		case "FILTER_BY_TITLE": {
 			return {
 				...state,
@@ -67,7 +65,6 @@ const eventReducer = (state: State, action: Action): State => {
 				activeFilter: "all",
 			};
 		}
-
 		case "SET_ACTIVE_FILTER":
 			return {
 				...state,
@@ -80,10 +77,8 @@ const eventReducer = (state: State, action: Action): State => {
 
 // Provider component
 export const EventProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-	const [state, dispatch] = useReducer(eventReducer, {
-		...initialState,
-		filteredEvents: initialState.events, // Initially show all events
-	});
+	// FIXED: Just use initialState directly, don't override
+	const [state, dispatch] = useReducer(eventReducer, initialState);
 
 	return <EventContext.Provider value={{ state, dispatch }}>{children}</EventContext.Provider>;
 };
