@@ -1,6 +1,6 @@
 "use client";
 
-import { type FC } from "react";
+import { type FC, useEffect, useState } from "react";
 import Link from "next/link";
 import { Event } from "@/types/Event";
 import useMedia from "@/hooks/useMedia";
@@ -28,10 +28,15 @@ export const EventCard: FC<EventCardProps> = ({
 	isFirst,
 }) => {
 	const { dispatch } = useEvent();
-
 	const isWide = useMedia("(min-width: 1024px)", false);
+	const [mounted, setMounted] = useState(false);
 
-	const parts = getEventDateParts(date, isWide);
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	// Use isWide only after mount to prevent hydration mismatch
+	const parts = getEventDateParts(date, mounted ? isWide : false);
 
 	// Add event to calendar
 	const toggleCalendar = (id: number) => {
@@ -83,7 +88,7 @@ export const EventCard: FC<EventCardProps> = ({
 					<span className="text-medium-gray text-sm">{location}</span>
 				</div>
 				<p>
-					{truncateText(description, isWide ? 145 : 20)}
+					{truncateText(description, mounted && isWide ? 145 : 20)}
 					{"... "}
 					<Link href="#" className="font-acme font-bold underline">
 						Detaylı Bilgi
