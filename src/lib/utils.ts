@@ -18,13 +18,13 @@ export const truncateText = (str: string, limit = 145) => {
 		.reduce((acc, word) => ((acc + " " + word).trim().length > limit ? acc : (acc + " " + word).trim()), "");
 };
 
-export function getEventDateParts(date: string): FormattedDateParts {
+export function getEventDateParts(date: string, isWide: boolean = false): FormattedDateParts {
 	const dateObj = dayjs(date);
 
 	return {
 		day: dateObj.format("D"),
 		month: dateObj.format("MMMM"),
-		weekday: dateObj.format("ddd"),
+		weekday: dateObj.format(isWide ? "dddd" : "ddd"),
 		time: dateObj.format("HH:mm"),
 	};
 }
