@@ -1,7 +1,12 @@
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
 dayjs.locale("tr");
+dayjs.tz.setDefault("Europe/Istanbul");
 
 export type FormattedDateParts = {
 	day: string;
