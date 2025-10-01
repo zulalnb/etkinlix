@@ -24,7 +24,7 @@ export const truncateText = (str: string, limit = 145) => {
 };
 
 export function getEventDateParts(date: string, isWide: boolean = false): FormattedDateParts {
-	const dateObj = dayjs(date);
+	const dateObj = dayjs.tz(date, "Europe/Istanbul");
 
 	return {
 		day: dateObj.format("D"),
