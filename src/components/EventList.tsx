@@ -15,7 +15,7 @@ export const EventList: FC = () => {
 			</h2>
 			{state.filteredEvents.length < 1 && (
 				<div className="flex items-center justify-center">
-					<p aria-live="polite" className="py-5 text-center text-3xl font-bold">
+					<p aria-live="polite" className="py-5 text-center text-3xl font-medium">
 						Aradığınız Etkinlik Bulunamadı...
 					</p>
 				</div>
