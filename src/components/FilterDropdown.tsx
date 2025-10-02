@@ -33,7 +33,7 @@ export const FilterDropdown = () => {
 			id="filter-dropdown"
 			role="dialog"
 			aria-labelledby="filter-dropdown-title"
-			className="absolute z-50 hidden space-y-5 bg-white p-8 shadow-[0_4px_50px_0_rgba(81,81,81,0.2)] group-focus-within:block group-hover:block"
+			className="absolute z-50 hidden space-y-5 bg-white p-8 shadow-[0_4px_50px_0_rgba(81,81,81,0.2)] group-hover:block"
 		>
 			<h2 id="filter-dropdown-title" className="sr-only">
 				Filtreler

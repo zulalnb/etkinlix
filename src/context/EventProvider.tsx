@@ -16,13 +16,13 @@ type Action =
 interface State {
 	events: Event[];
 	filteredEvents: Event[];
-	activeFilter: string;
+	activeFilter: string | null;
 }
 
-// Initial state - FIXED: filteredEvents should match events initially
+// Initial state
 const initialState: State = {
 	events: events as Event[],
-	filteredEvents: events as Event[], // Changed from [] to events
+	filteredEvents: events as Event[],
 	activeFilter: "all",
 };
 
@@ -62,7 +62,7 @@ const eventReducer = (state: State, action: Action): State => {
 				filteredEvents: state.events.filter((event) =>
 					event.title.toLowerCase().includes(action.title.toLowerCase()),
 				),
-				activeFilter: "all",
+				activeFilter: null,
 			};
 		}
 		case "SET_ACTIVE_FILTER":

@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, type ChangeEvent } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import { useEvent } from "@/context/EventProvider";
 import { Icon } from "./Icon";
 
 export const SearchInput = () => {
 	const [title, setTitle] = useState<string>("");
-	const { dispatch } = useEvent();
+	const { dispatch, state } = useEvent();
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
@@ -18,6 +18,12 @@ export const SearchInput = () => {
 			dispatch({ type: "FILTER_BY_TITLE", title: value });
 		}
 	};
+
+	useEffect(() => {
+		if (state.activeFilter && title.length > 0) {
+			setTitle("");
+		}
+	}, [state.activeFilter]);
 
 	return (
 		<div className="group relative my-2 flex w-full items-center justify-items-center text-sm lg:w-50">

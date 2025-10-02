@@ -4,7 +4,7 @@ import { Icon } from "./Icon";
 export const FilterButton: FC = ({ ...rest }) => {
 	return (
 		<button
-			className="hover:text-pink group-hover:text-pink focus-within:text-pink flex items-center py-3 text-black transition-colors"
+			className="hover:text-pink group-hover:text-pink flex items-center py-3 text-black transition-colors"
 			{...rest}
 		>
 			<Icon name="menu" size={20} className="mr-2" />
