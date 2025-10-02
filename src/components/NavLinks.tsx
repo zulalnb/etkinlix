@@ -16,14 +16,14 @@ export const NavLinks = () => {
 	};
 	return (
 		<>
-			<NavLink onClick={filterAll} isActive={state.activeFilter === "all"}>
+			<NavLink onClick={filterAll} isActive={state.activeType === "all"}>
 				Tüm Etkinlikler
 			</NavLink>
 			{pathnames.map((pathname) => (
 				<NavLink
 					key={pathname}
 					onClick={() => filterByType(pathname)}
-					isActive={state.activeFilter === pathname}
+					isActive={state.activeType === pathname}
 				>
 					{pathname}
 				</NavLink>

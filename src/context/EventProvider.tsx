@@ -21,7 +21,7 @@ interface State {
 	locations: Location[];
 	selectedLocations: Location[] | [];
 	filteredEvents: Event[];
-	activeFilter: string | null;
+	activeType: string | null;
 }
 
 // Initial state
@@ -30,7 +30,7 @@ const initialState: State = {
 	locations: locations as Location[],
 	selectedLocations: [],
 	filteredEvents: events as Event[],
-	activeFilter: "all",
+	activeType: "all",
 };
 
 // Create the context
@@ -56,12 +56,12 @@ const eventReducer = (state: State, action: Action): State => {
 				),
 			};
 		case "FILTER_ALL":
-			return { ...state, filteredEvents: state.events, activeFilter: "all" };
+			return { ...state, filteredEvents: state.events, activeType: "all" };
 		case "FILTER_BY_TYPE":
 			return {
 				...state,
 				filteredEvents: state.events.filter((event) => event.type === action.eventType),
-				activeFilter: action.eventType,
+				activeType: action.eventType,
 			};
 		case "FILTER_BY_TITLE": {
 			return {
@@ -69,13 +69,13 @@ const eventReducer = (state: State, action: Action): State => {
 				filteredEvents: state.events.filter((event) =>
 					event.title.toLowerCase().includes(action.title.toLowerCase()),
 				),
-				activeFilter: null,
+				activeType: null,
 			};
 		}
 		case "SET_ACTIVE_FILTER":
 			return {
 				...state,
-				activeFilter: action.filter,
+				activeType: action.filter,
 			};
 		case "TOGGLE_LOCATION": {
 			const exists = state.selectedLocations.some((loc) => loc.id === action.id);
@@ -95,7 +95,7 @@ const eventReducer = (state: State, action: Action): State => {
 								),
 							)
 						: state.events,
-				activeFilter: updatedSelected.length > 0 ? null : "all",
+				activeType: updatedSelected.length > 0 ? null : "all",
 			};
 		}
 		default:
