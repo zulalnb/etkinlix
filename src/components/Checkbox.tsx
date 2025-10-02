@@ -1,16 +1,27 @@
-import { type LabelHTMLAttributes } from "react";
+import { ComponentPropsWithoutRef } from "react";
 
-interface CheckboxProps extends LabelHTMLAttributes<HTMLLabelElement> {
+type CheckboxProps = {
 	name: string;
 	label: string;
-}
+	inputProps?: ComponentPropsWithoutRef<"input">;
+	onChange?: () => void;
+	checked?: boolean;
+};
 
-export const Checkbox = ({ name, label, ...rest }: CheckboxProps) => {
+export const Checkbox = ({ name, label, inputProps, onChange, checked }: CheckboxProps) => {
 	const id = `checkbox-${name}`;
 
 	return (
-		<label htmlFor={id} className="relative block cursor-pointer py-2.25 pl-7.5 select-none" {...rest}>
-			<input id={id} name={name} type="checkbox" className="peer absolute size-0 cursor-pointer opacity-0" />
+		<label htmlFor={id} className="relative block cursor-pointer py-2.25 pl-7.5 select-none">
+			<input
+				id={id}
+				name={name}
+				type="checkbox"
+				className="peer absolute size-0 cursor-pointer opacity-0"
+				onChange={onChange}
+				checked={checked}
+				{...inputProps}
+			/>
 
 			{/* Custom visual box */}
 			<span

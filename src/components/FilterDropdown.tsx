@@ -1,33 +1,39 @@
 "use client";
 
+import { useEvent } from "@/context/EventProvider";
 import { Checkbox } from "./Checkbox";
+import locations from "@/data/locations.json";
+
+type Option = {
+	id: number;
+	name: string;
+};
 
 type FilterGroup = {
 	id: string;
 	legend: string;
-	options: string[];
+	options: Option[];
 };
 
 const filterGroups: FilterGroup[] = [
 	{
 		id: "locations",
 		legend: "Etkinlik Mekanı",
-		options: [
-			"Maximum Uniq Hall",
-			"Maximum Uniq Box",
-			"Maximum Uniq Lounge",
-			"Maximum Uniq Açıkhava",
-			"Bahçe Fuaye",
-		],
+		options: locations,
 	},
 	{
 		id: "dates",
 		legend: "Etkinlik Tarihi",
-		options: ["Güncel Etkinlikler", "Geçmiş Etkinlikler"],
+		options: [
+			{ id: 1, name: "Güncel Etkinlikler" },
+			{ id: 2, name: "Geçmiş Etkinlikler" },
+		],
 	},
 ];
 
 export const FilterDropdown = () => {
+	const { state, dispatch } = useEvent();
+
 	return (
 		<div
 			id="filter-dropdown"
@@ -42,9 +48,19 @@ export const FilterDropdown = () => {
 				<fieldset key={group.id}>
 					<legend className="mb-2 font-bold">{group.legend}</legend>
 					<div className="divide-extra-light-gray flex flex-col divide-y">
-						{group.options.map((opt) => (
-							<Checkbox key={opt} name={opt} label={opt} />
-						))}
+						{group.options.map((opt) => {
+							return (
+								<Checkbox
+									key={opt.id}
+									name={opt.name}
+									label={opt.name}
+									{...(group.id === "locations" && {
+										checked: state.selectedLocations.some((selected) => selected.id === opt.id),
+										onChange: () => dispatch({ type: "TOGGLE_LOCATION", id: opt.id }),
+									})}
+								/>
+							);
+						})}
 					</div>
 				</fieldset>
 			))}

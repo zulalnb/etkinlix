@@ -3,6 +3,8 @@
 import React, { createContext, useContext, useReducer, ReactNode } from "react";
 import { Event, Type } from "@/types/Event";
 import events from "@/data/events.json";
+import locations from "@/data/locations.json";
+import { Location } from "@/types/Location";
 
 // Define the possible actions
 type Action =
@@ -10,11 +12,14 @@ type Action =
 	| { type: "FILTER_ALL" }
 	| { type: "FILTER_BY_TYPE"; eventType: Type }
 	| { type: "FILTER_BY_TITLE"; title: string }
-	| { type: "SET_ACTIVE_FILTER"; filter: string };
+	| { type: "SET_ACTIVE_FILTER"; filter: string }
+	| { type: "TOGGLE_LOCATION"; id: number };
 
 // Define the initial state type
 interface State {
 	events: Event[];
+	locations: Location[];
+	selectedLocations: Location[] | [];
 	filteredEvents: Event[];
 	activeFilter: string | null;
 }
@@ -22,6 +27,8 @@ interface State {
 // Initial state
 const initialState: State = {
 	events: events as Event[],
+	locations: locations as Location[],
+	selectedLocations: [],
 	filteredEvents: events as Event[],
 	activeFilter: "all",
 };
@@ -70,6 +77,27 @@ const eventReducer = (state: State, action: Action): State => {
 				...state,
 				activeFilter: action.filter,
 			};
+		case "TOGGLE_LOCATION": {
+			const exists = state.selectedLocations.some((loc) => loc.id === action.id);
+
+			const updatedSelected = exists
+				? state.selectedLocations.filter((loc) => loc.id !== action.id)
+				: [...state.selectedLocations, state.locations.find((loc) => loc.id === action.id)!];
+
+			return {
+				...state,
+				selectedLocations: updatedSelected,
+				filteredEvents:
+					updatedSelected.length > 0
+						? state.events.filter((event) =>
+								updatedSelected.some(
+									(selected) => selected.name.toLowerCase() === event.location.toLowerCase(),
+								),
+							)
+						: state.events,
+				activeFilter: updatedSelected.length > 0 ? null : "all",
+			};
+		}
 		default:
 			return state;
 	}
