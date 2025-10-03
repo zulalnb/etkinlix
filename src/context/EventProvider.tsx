@@ -13,7 +13,8 @@ type Action =
 	| { type: "FILTER_BY_TYPE"; eventType: Type }
 	| { type: "FILTER_BY_TITLE"; title: string }
 	| { type: "SET_ACTIVE_FILTER"; filter: string }
-	| { type: "TOGGLE_LOCATION"; id: number };
+	| { type: "TOGGLE_LOCATION"; id: number }
+	| { type: "VIEW_CALENDAR" };
 
 // Define the initial state type
 interface State {
@@ -22,6 +23,7 @@ interface State {
 	selectedLocations: Location[] | [];
 	filteredEvents: Event[];
 	activeType: string | null;
+	viewCalendar: boolean;
 }
 
 // Initial state
@@ -31,6 +33,7 @@ const initialState: State = {
 	selectedLocations: [],
 	filteredEvents: events as Event[],
 	activeType: "all",
+	viewCalendar: false,
 };
 
 // Create the context
@@ -55,13 +58,24 @@ const eventReducer = (state: State, action: Action): State => {
 					event.id === action.id ? { ...event, in_calendar: !event.in_calendar } : event,
 				),
 			};
+		case "VIEW_CALENDAR":
+			return {
+				...state,
+				viewCalendar: !state.viewCalendar,
+				activeType: !state.viewCalendar ? null : "all",
+				selectedLocations: [],
+				filteredEvents: !state.viewCalendar
+					? state.events.filter((event) => event.in_calendar)
+					: state.events,
+			};
 		case "FILTER_ALL":
-			return { ...state, filteredEvents: state.events, activeType: "all" };
+			return { ...state, filteredEvents: state.events, activeType: "all", viewCalendar: false };
 		case "FILTER_BY_TYPE":
 			return {
 				...state,
 				filteredEvents: state.events.filter((event) => event.type === action.eventType),
 				activeType: action.eventType,
+				viewCalendar: false,
 			};
 		case "FILTER_BY_TITLE": {
 			return {
@@ -70,12 +84,14 @@ const eventReducer = (state: State, action: Action): State => {
 					event.title.toLowerCase().includes(action.title.toLowerCase()),
 				),
 				activeType: null,
+				viewCalendar: false,
 			};
 		}
 		case "SET_ACTIVE_FILTER":
 			return {
 				...state,
 				activeType: action.filter,
+				viewCalendar: false,
 			};
 		case "TOGGLE_LOCATION": {
 			const exists = state.selectedLocations.some((loc) => loc.id === action.id);
@@ -96,6 +112,7 @@ const eventReducer = (state: State, action: Action): State => {
 							)
 						: state.events,
 				activeType: updatedSelected.length > 0 ? null : "all",
+				viewCalendar: false,
 			};
 		}
 		default:
@@ -105,7 +122,6 @@ const eventReducer = (state: State, action: Action): State => {
 
 // Provider component
 export const EventProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-	// FIXED: Just use initialState directly, don't override
 	const [state, dispatch] = useReducer(eventReducer, initialState);
 
 	return <EventContext.Provider value={{ state, dispatch }}>{children}</EventContext.Provider>;

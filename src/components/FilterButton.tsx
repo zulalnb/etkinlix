@@ -4,13 +4,15 @@ import { Icon } from "./Icon";
 
 interface FilterButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	count?: number;
+	isActive?: boolean;
 }
 
-export const FilterButton: FC<FilterButtonProps> = ({ count, className, ...rest }) => {
+export const FilterButton: FC<FilterButtonProps> = ({ count, isActive, className, ...rest }) => {
 	return (
 		<button
 			className={clsx(
 				"hover:text-pink group-hover:text-pink relative flex items-center py-3 text-black transition-colors",
+				isActive && "text-pink",
 				className,
 			)}
 			{...rest}

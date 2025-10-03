@@ -20,10 +20,10 @@ export const SearchInput = () => {
 	};
 
 	useEffect(() => {
-		if (state.activeType && title.length > 0) {
+		if ((state.activeType || state.selectedLocations.length > 0 || state.viewCalendar) && title.length > 0) {
 			setTitle("");
 		}
-	}, [state.activeType]);
+	}, [state.activeType, state.selectedLocations, state.viewCalendar]);
 
 	return (
 		<div className="group relative my-2 flex w-full items-center justify-items-center text-sm lg:w-50">
