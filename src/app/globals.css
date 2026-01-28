@@ -44,12 +44,8 @@
 		@apply cursor-pointer;
 	}
 
-	button:focus-visible,
-	a:focus-visible,
-	input:focus-visible,
-	select:focus-visible,
-	textarea:focus-visible,
-	[role="button"]:focus-visible {
+	button:not(:disabled),
+	[role="button"]:not(:disabled) {
 		@apply outline-pink outline-2 outline-offset-2 outline-solid;
 	}
 
