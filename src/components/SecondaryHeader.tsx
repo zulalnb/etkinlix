@@ -1,5 +1,6 @@
 "use client";
 
+import { Popover } from "@headlessui/react";
 import { useEvent } from "@/context/EventProvider";
 import { FilterButton } from "./FilterButton";
 import { FilterDropdown } from "./FilterDropdown";
@@ -12,13 +13,13 @@ export const SecondaryHeader = () => {
 		<div className="bg-extra-light-gray w-full">
 			<div className="container mx-auto px-4">
 				<div className="flex items-center justify-between">
-					<div className="group">
+					<Popover className="group relative">
 						<FilterButton
 							count={state.selectedLocations.length}
 							isActive={state.selectedLocations.length > 0}
 						/>
 						<FilterDropdown />
-					</div>
+					</Popover>
 					<ViewCalendarButton
 						onClick={() => dispatch({ type: "VIEW_CALENDAR" })}
 						isActive={state.viewCalendar}

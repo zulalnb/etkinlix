@@ -1,17 +1,18 @@
-import { type FC, ButtonHTMLAttributes } from "react";
+import { type FC, ComponentPropsWithoutRef } from "react";
+import { PopoverButton } from "@headlessui/react";
 import clsx from "clsx";
 import { Icon } from "./Icon";
 
-interface FilterButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface FilterButtonProps extends ComponentPropsWithoutRef<typeof PopoverButton> {
 	count?: number;
 	isActive?: boolean;
 }
 
 export const FilterButton: FC<FilterButtonProps> = ({ count, isActive, className, ...rest }) => {
 	return (
-		<button
+		<PopoverButton
 			className={clsx(
-				"hover:text-pink group-hover:text-pink relative flex items-center py-3 text-black transition-colors",
+				"hover:text-pink group-data-open:text-pink relative flex items-center py-3 text-black transition-colors",
 				isActive && "text-pink",
 				className,
 			)}
@@ -25,6 +26,6 @@ export const FilterButton: FC<FilterButtonProps> = ({ count, isActive, className
 
 			<Icon name="menu" size={20} className="mr-2" />
 			<span>Filtreler</span>
-		</button>
+		</PopoverButton>
 	);
 };
