@@ -10,7 +10,6 @@
 	},
 	"dependencies": {
 		"@headlessui/react": "^2.2.9",
-		"@vercel/speed-insights": "^1.2.0",
 		"clsx": "^2.1.1",
 		"dayjs": "^1.11.18",
 		"next": "15.5.12",
