@@ -1,6 +1,6 @@
 "use client";
 
-import { PopoverPanel } from "@headlessui/react";
+import { Fieldset, Legend, PopoverPanel } from "@headlessui/react";
 import { useEvent } from "@/context/EventProvider";
 import { Checkbox } from "./Checkbox";
 import locations from "@/data/locations.json";
@@ -47,8 +47,8 @@ export const FilterDropdown = () => {
 				Filtreler
 			</h2>
 			{filterGroups.map((group) => (
-				<fieldset key={group.id}>
-					<legend className="mb-2 font-bold">{group.legend}</legend>
+				<Fieldset key={group.id}>
+					<Legend className="mb-2 font-bold">{group.legend}</Legend>
 					<div className="divide-extra-light-gray flex flex-col divide-y">
 						{group.options.map((opt) => {
 							return (
@@ -64,7 +64,7 @@ export const FilterDropdown = () => {
 							);
 						})}
 					</div>
-				</fieldset>
+				</Fieldset>
 			))}
 		</PopoverPanel>
 	);
